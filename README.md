@@ -4,7 +4,6 @@
 * Reads input in from file (input.txt) and processes queries in order
 * Handles invalid queries, even if they match the original pattern
 * Outputs in desired format
-* 
 
 ## Assumptions
 * Queries are not always entered in order (ex. glob means I, how much is glob glob ?, prok means X)
