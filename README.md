@@ -13,6 +13,8 @@
 * Outputting to the console rather than writing to a file
 * Can only operate on one thread
 * Standard roman numeral assignments (I = 1, V = 5, etc.)
+* The intergalactic numerals follow the same rules as roman numerals
+* All calculations will either result in an integer or any floats get floored
 
 ## Design Choices
 * O(N*M) due to performing worst case runtime operation O(N) while looping through the input file, which would be O(M), code processes queries in O(N) time

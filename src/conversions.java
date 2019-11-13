@@ -1,15 +1,15 @@
 import java.util.HashMap;
 
 public class conversions {
-    HashMap<String, Integer> symbols;
-    HashMap<String, Integer> minerals;
+    HashMap<String, Integer> intergalacticNumerals;
+    HashMap<String, Float> minerals;
 
     conversions(){
-        symbols = new HashMap<>();
+        intergalacticNumerals = new HashMap<>();
         minerals = new HashMap<>();
     }
 
-    public void numberTranslation(String num, String romanNumeral){
+    public void numberTranslation(String intergalacticNumeral, String romanNumeral){
         Integer decimalVal;
         switch (romanNumeral){
             case "I":
@@ -36,22 +36,22 @@ public class conversions {
             default:
                 decimalVal = 0;
         }
-        symbols.put(num, decimalVal);
+        intergalacticNumerals.put(intergalacticNumeral, decimalVal);
     }
 
-    public void materialTranslation(String unit, String mineral, String credits){
+    public void materialTranslation(String intergalacticNumerals, String mineral, String credits){
         int creditVal = Integer.parseInt(credits);
-        int unitVal = numeralToDecimal(unit);
-        int mineralValue = creditVal/unitVal;
+        int intergalacticNumeralsVal = numeralToDecimal(intergalacticNumerals);
+        float mineralValue =(float) creditVal/intergalacticNumeralsVal;
         minerals.put(mineral, mineralValue);
     }
 
-    public int numeralToDecimal(String units){
+    public int numeralToDecimal(String intergalacticNumeralInput){
         int total = 0;
         int prev = 1001;
-        String[] values = units.split(" ");
+        String[] values = intergalacticNumeralInput.split(" ");
         for(String unit : values){
-            int val = symbols.get(unit);
+            int val = intergalacticNumerals.get(unit);
             total += val;
             if (val > prev){
                 total = total - (2*prev);
@@ -62,12 +62,13 @@ public class conversions {
     }
 
     public int mineralValToDecimal(String input){
-        String units = input.substring(0, input.lastIndexOf(" "));
+        String intergalacticNumeralInput = input.substring(0, input.lastIndexOf(" "));
         String mineral = input.substring(input.lastIndexOf(" ") + 1);
 
-        int numberOfMineral = numeralToDecimal(units);
-        int valueOfMineral = minerals.get(mineral);
-        return numberOfMineral*valueOfMineral;
+        int numberOfMineral = numeralToDecimal(intergalacticNumeralInput);
+        float valueOfMineral = minerals.get(mineral);
+        int mineralValue = (int) (numberOfMineral*valueOfMineral);
+        return mineralValue;
     }
 
 }
