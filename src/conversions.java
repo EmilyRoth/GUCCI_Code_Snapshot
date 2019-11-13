@@ -1,7 +1,6 @@
 import java.util.HashMap;
 
 public class conversions {
-    // HashMap
     HashMap<String, Integer> symbols;
     HashMap<String, Integer> minerals;
 
@@ -63,8 +62,12 @@ public class conversions {
     }
 
     public int mineralValToDecimal(String input){
+        String units = input.substring(0, input.lastIndexOf(" "));
+        String mineral = input.substring(input.lastIndexOf(" ") + 1);
 
-        return 0;
+        int numberOfMineral = numeralToDecimal(units);
+        int valueOfMineral = minerals.get(mineral);
+        return numberOfMineral*valueOfMineral;
     }
 
 }
